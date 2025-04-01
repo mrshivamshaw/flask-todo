@@ -9,8 +9,8 @@ commands = [
 [phases.install]
 # Install Python dependencies
 commands = [
-    "pip install --upgrade pip",
-    "pip install Flask Flask-SQLAlchemy",
+    "source venv/bin/activate && pip install --upgrade pip",
+    "source venv/bin/activate && pip install Flask Flask-SQLAlchemy",
 ]
 
 [phases.build]
@@ -19,10 +19,10 @@ commands = []
 
 [start]
 # Set environment variables and run Flask
-command = "flask run --host=0.0.0.0 --port=$PORT"
+command = "source venv/bin/activate && flask run --host=0.0.0.0 --port=$PORT"
 env = [
     "FLASK_APP=app.py",
-    "FLASK_ENV=development",
+    "FLASK_ENV=production",
 ]
 
 [build]
