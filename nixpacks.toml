@@ -14,4 +14,8 @@ cmds = [
 cmds = []
 
 [start]
-cmd = "source venv/bin/activate && flask run --host=0.0.0.0 --port=${PORT:-5000}"
+cmd = "source venv/bin/activate && python app.py"
+env = [
+    "FLASK_APP=app.py",
+    "FLASK_ENV=production"
+]
