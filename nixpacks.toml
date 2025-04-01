@@ -1,0 +1,30 @@
+[phases.setup]
+# Create and activate Python virtual environment
+commands = [
+    "python -m venv venv",
+    "source venv/bin/activate",  # For Linux/Mac
+    # Windows would use: "venv\\Scripts\\activate",
+]
+
+[phases.install]
+# Install Python dependencies
+commands = [
+    "pip install --upgrade pip",
+    "pip install Flask Flask-SQLAlchemy",
+]
+
+[phases.build]
+# No additional build steps needed for basic Flask
+commands = []
+
+[start]
+# Set environment variables and run Flask
+command = "flask run --host=0.0.0.0 --port=$PORT"
+env = [
+    "FLASK_APP=app.py",
+    "FLASK_ENV=development",
+]
+
+[build]
+# Base image and Python version
+baseImage = "python:3.9-slim"
